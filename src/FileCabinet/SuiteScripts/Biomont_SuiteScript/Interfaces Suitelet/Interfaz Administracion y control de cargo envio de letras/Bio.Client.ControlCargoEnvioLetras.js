@@ -127,7 +127,7 @@ define(['N'],
                         // Ejecutar peticion
                         let responseData = sendRequest({ method, method_id });
                         if (responseData.status == 'success' && responseData.suitelet) {
-                            // refreshPage(responseData);
+                            refreshPage(responseData);
                         }
                     }
                 });

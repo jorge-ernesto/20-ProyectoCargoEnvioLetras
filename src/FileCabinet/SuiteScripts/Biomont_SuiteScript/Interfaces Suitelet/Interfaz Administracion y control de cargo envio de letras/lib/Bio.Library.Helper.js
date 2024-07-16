@@ -9,8 +9,8 @@ define(['N'],
 
         const { log, runtime, format, email, url } = N;
 
-        const scriptId = 'customscript_bio_sl_con_fixed_assets_det';
-        const deployId = 'customdeploy_bio_sl_con_fixed_assets_det';
+        const scriptId = 'customscript_bio_sl_ctrl_car_env_let';
+        const deployId = 'customdeploy_bio_sl_ctrl_car_env_let';
 
         /******************/
 
@@ -35,18 +35,34 @@ define(['N'],
 
         /****************** Email ******************/
 
+        function getUrlSuitelet() {
+
+            // Obtener url del Suitelet mediante ID del Script y ID del Despliegue
+            let suitelet = url.resolveScript({
+                deploymentId: deployId,
+                scriptId: scriptId
+            })
+
+            return { suitelet };
+        }
+
         function sendEmail_NotificarRechazo(arrayLetrasProcesadas, user) {
 
             let arrayLetras = arrayLetrasProcesadas.map(value => `- ${value}`);
+            let { suitelet } = getUrlSuitelet();
 
             email.send({
                 author: 22147, // Usuario 'NOTIFICACIONES NETSUITE'
                 recipients: ['contabilidad@biomont.com.pe', 'finanzas@biomont.com.pe'],
                 subject: `[Cargo de envio de letras] Notificación de rechazo`,
                 body: `
-                    El usuario <b>"${user.name}"</b> ha rechazado las siguientes letras por pagar:<br /><br />
-                    ${arrayLetras.join('<br />')}
+                    El usuario <b>"${user.name}"</b> ha rechazado letras por pagar.<br /><br />
+                    Link: <a href="${suitelet}">${suitelet}</a>
                 `
+                // body: `
+                //     El usuario <b>"${user.name}"</b> ha rechazado las siguientes letras por pagar:<br /><br />
+                //     ${arrayLetras.join('<br />')}
+                // `
             });
         }
 

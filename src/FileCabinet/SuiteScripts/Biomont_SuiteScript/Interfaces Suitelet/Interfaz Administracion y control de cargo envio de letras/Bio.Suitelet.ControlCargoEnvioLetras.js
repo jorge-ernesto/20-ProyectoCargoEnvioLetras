@@ -11,6 +11,7 @@ define(['./lib/Bio.Library.Search', './lib/Bio.Library.Process', './lib/Bio.Libr
     function (objSearch, objProcess, objWidget, objHelper, N) {
 
         const { log, redirect, runtime } = N;
+        const { serverWidget, message } = N.ui;
 
         /******************/
 
@@ -34,11 +35,21 @@ define(['./lib/Bio.Library.Search', './lib/Bio.Library.Process', './lib/Bio.Libr
                 let dateFrom = scriptContext.request.parameters['_dateFrom'];
                 let dateTo = scriptContext.request.parameters['_dateTo'];
                 let estadoCargo = scriptContext.request.parameters['_estadoCargo'];
+                let status = scriptContext.request.parameters['_status'];
+
+                // Si hubo una redireccion a este mismo suitelet
+                if (status?.includes('PROCESS_SUCCESS')) {
+                    form.addPageInitMessage({
+                        type: message.Type.INFORMATION,
+                        message: `Se proceso la solicitud correctamente`,
+                        duration: 25000
+                    });
+                }
 
                 if (button == 'consultar') {
 
                     // Debug
-                    // objHelper.error_log('debug', { subsidiary, dateFrom, dateTo, estadoCargo });
+                    // objHelper.error_log('debug', { subsidiary, dateFrom, dateTo, estadoCargo, status });
 
                     // Setear datos al formulario
                     fieldSubsidiary.defaultValue = subsidiary;
