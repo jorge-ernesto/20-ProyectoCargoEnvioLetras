@@ -152,6 +152,7 @@
             <Column ss:Width="90" />
             <Column ss:Width="90" />
             <Column ss:Width="90" />
+            <Column ss:Width="90" />
             <Row>
             </Row>
 
@@ -204,6 +205,9 @@
                     <Data ss:Type="String">ID INTERNO</Data>
                 </Cell>
                 <Cell ss:StyleID="t1">
+                    <Data ss:Type="String">SUBSIDIARIA</Data>
+                </Cell>
+                <Cell ss:StyleID="t1">
                     <Data ss:Type="String">T/D</Data>
                 </Cell>
                 <Cell ss:StyleID="t1">
@@ -249,6 +253,9 @@
                 <Row>
                     <Cell ss:StyleID="cell">
                         <Data ss:Type="String">${documentos.id_interno}</Data>
+                    </Cell>
+                    <Cell ss:StyleID="cell">
+                        <Data ss:Type="String">${documentos.subsidiaria.nombre}</Data>
                     </Cell>
                     <Cell ss:StyleID="cell">
                         <Data ss:Type="String">${documentos.tipo.nombre}</Data>

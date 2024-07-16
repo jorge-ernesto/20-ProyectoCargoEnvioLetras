@@ -169,7 +169,11 @@ define(['./Bio.Library.Helper', 'N'],
                     search.createColumn({ name: "internalid", label: "ID interno" }),
                     search.createColumn({ name: "custrecord_bio_let_pag_subsidiaria", label: "Subsidiaria" }),
                     search.createColumn({ name: "custrecord_bio_let_pag_id_letras_pagar", label: "ID Letras por Pagar" }),
-                    search.createColumn({ name: "custrecord_bio_let_pag_estado_cargo", label: "Estado Cargo" })
+                    search.createColumn({ name: "custrecord_bio_let_pag_estado_cargo", label: "Estado Cargo" }),
+                    // Otros
+                    search.createColumn({ name: "created", label: "Fecha de creación" }),
+                    search.createColumn({ name: "lastmodified", label: "Ultima modificación" }),
+                    search.createColumn({ name: "lastmodifiedby", label: "Ultima modificación por" })
                 ],
                 filters: [
                     // ["isinactive", "is", "F"], // No importa si esta activo o inactivo, si existe el registro, lo actualiza
@@ -196,13 +200,21 @@ define(['./Bio.Library.Helper', 'N'],
                 let id_letras_pagar = node.getValue(columns[2]); // ID Letras por Pagar
                 let estado_cargo = node.getValue(columns[3]); // Estado Cargo
                 let estado_cargo_nombre = node.getText(columns[3]); // Estado Cargo
+                // Otros
+                let fecha_creacion = node.getValue(columns[4]); // Fecha de creación
+                let ultima_modificacion = node.getValue(columns[5]); // Ultima modificación
+                let ultima_modificacion_por = node.getText(columns[6]); // Ultima modificación por
 
                 // Insertar informacion en array
                 resultTransaction.push({
                     id_interno: id_interno,
                     subsidiaria: { id: subsidiaria, nombre: subsidiaria_nombre },
                     id_letras_pagar: id_letras_pagar,
-                    estado_cargo: { id: estado_cargo, nombre: estado_cargo_nombre }
+                    estado_cargo: { id: estado_cargo, nombre: estado_cargo_nombre },
+                    // Otros
+                    fecha_creacion: fecha_creacion,
+                    ultima_modificacion: ultima_modificacion,
+                    ultima_modificacion_por: ultima_modificacion_por
                 });
 
                 return true; // La funcion each debes indicarle si quieres que siga iterando o no

@@ -17,9 +17,6 @@ define(['./Bio.Library.Helper', 'N'],
 
         function getDataLetrasPorPagar_Completo(dataLetrasPorPagar, dataLetrasPorPagar_Datos, estadoCargo) {
 
-            // Procesar informacion
-            // ...
-
             // Agregar arreglos vacios / Agregar JSON vacios
             dataLetrasPorPagar.forEach((value, key) => {
                 dataLetrasPorPagar[key]['estado_cargo'] = dataLetrasPorPagar[key]['estado_cargo'] || {};
@@ -40,7 +37,18 @@ define(['./Bio.Library.Helper', 'N'],
                 dataLetrasPorPagar[key_LPP]['estado_cargo'] = { id: 'sin-estado', nombre: 'Sin estado' };
                 dataLetrasPorPagar_Datos.forEach((value_LPP_Datos, key_LPP_Datos) => {
                     if (value_LPP.id_interno == value_LPP_Datos.id_letras_pagar && value_LPP.subsidiaria.id == value_LPP_Datos.subsidiaria.id) {
-                        if (value_LPP_Datos.estado_cargo.id) dataLetrasPorPagar[key_LPP_Datos]['estado_cargo'] = value_LPP_Datos.estado_cargo;
+                        if (value_LPP_Datos.estado_cargo.id) {
+                            dataLetrasPorPagar[key_LPP]['estado_cargo'] = value_LPP_Datos.estado_cargo;
+                        }
+                        if (value_LPP_Datos.fecha_creacion) {
+                            dataLetrasPorPagar[key_LPP]['fecha_creacion'] = value_LPP_Datos.fecha_creacion;
+                        }
+                        if (value_LPP_Datos.ultima_modificacion) {
+                            dataLetrasPorPagar[key_LPP]['ultima_modificacion'] = value_LPP_Datos.ultima_modificacion;
+                        }
+                        if (value_LPP_Datos.ultima_modificacion_por) {
+                            dataLetrasPorPagar[key_LPP]['ultima_modificacion_por'] = value_LPP_Datos.ultima_modificacion_por;
+                        }
                     }
                 });
             });

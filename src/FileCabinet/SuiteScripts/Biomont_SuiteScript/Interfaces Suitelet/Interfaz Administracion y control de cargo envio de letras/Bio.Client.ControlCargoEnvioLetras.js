@@ -28,6 +28,22 @@ define(['N'],
          */
         function pageInit(scriptContext) {
 
+            // Obener el currentRecord
+            let recordContext = scriptContext.currentRecord;
+
+            // Inicializar los checkboxes en la sublista
+            let sublistName = 'custpage_sublist_reporte_lista_letras';
+            let lineCount = recordContext.getLineCount({ sublistId: sublistName });
+
+            for (let i = 0; i < lineCount; i++) {
+                recordContext.selectLine({ sublistId: sublistName, line: i });
+                recordContext.setCurrentSublistValue({
+                    sublistId: sublistName,
+                    fieldId: 'custpage_tipo_checkbox',
+                    value: false // o true, dependiendo de tu lógica
+                });
+                recordContext.commitLine({ sublistId: sublistName });
+            }
         }
 
         /****************** Funcionalidad en campos ******************/

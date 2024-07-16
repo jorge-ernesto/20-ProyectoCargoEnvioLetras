@@ -40,7 +40,7 @@ define(['./lib/Bio.Library.Search', './lib/Bio.Library.Process', './lib/Bio.Libr
                 // Si hubo una redireccion a este mismo suitelet
                 if (status?.includes('PROCESS_SUCCESS')) {
                     form.addPageInitMessage({
-                        type: message.Type.INFORMATION,
+                        type: message.Type.CONFIRMATION,
                         message: `Se proceso la solicitud correctamente`,
                         duration: 25000
                     });

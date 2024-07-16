@@ -124,6 +124,10 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             // Setear un primer valor vacio
             if (name == 'fieldEstadoCargo') {
                 field.addSelectOption({
+                    value: '',
+                    text: ''
+                });
+                field.addSelectOption({
                     value: 'sin-estado',
                     text: 'Sin estado'
                 });
@@ -159,6 +163,7 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             sublist.addField({ id: 'custpage_tipo_checkbox', type: serverWidget.FieldType.CHECKBOX, label: 'Seleccionar' });
             sublist.addField({ id: 'custpage_id_interno', type: serverWidget.FieldType.TEXT, label: 'ID interno' });
             sublist.addField({ id: 'custpage_subsidiaria', type: serverWidget.FieldType.TEXT, label: 'Subsidiaria' });
+            sublist.addField({ id: 'custpage_subsidiaria_nombre', type: serverWidget.FieldType.TEXT, label: 'Subsidiaria' });
             sublist.addField({ id: 'custpage_tipo_nombre', type: serverWidget.FieldType.TEXT, label: 'T/D' });
             sublist.addField({ id: 'custpage_numero_documento', type: serverWidget.FieldType.TEXT, label: 'N. Documento' });
             sublist.addField({ id: 'custpage_proveedor_ruc', type: serverWidget.FieldType.TEXT, label: 'RUC' });
@@ -172,9 +177,11 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             sublist.addField({ id: 'custpage_importe_pagado_me', type: serverWidget.FieldType.TEXT, label: 'Pagado' });
             sublist.addField({ id: 'custpage_importe_saldo_me', type: serverWidget.FieldType.TEXT, label: 'Saldo' });
             sublist.addField({ id: 'custpage_estado_cargo', type: serverWidget.FieldType.TEXT, label: 'Estado Cargo' });
+            sublist.addField({ id: 'custpage_fecha_creacion', type: serverWidget.FieldType.TEXT, label: 'Fecha de creación' });
+            sublist.addField({ id: 'custpage_ultima_modificacion', type: serverWidget.FieldType.TEXT, label: 'Ultima modificación' });
+            sublist.addField({ id: 'custpage_ultima_modificacion_por', type: serverWidget.FieldType.TEXT, label: 'Ultima modificación por' });
 
             // Setear propiedades a sublista
-            // sublist.getField({ id: 'custpage_id_interno' }).updateDisplayType({ displayType: 'HIDDEN' });
             sublist.getField({ id: 'custpage_subsidiaria' }).updateDisplayType({ displayType: 'HIDDEN' });
 
             // Setear los datos obtenidos a sublista
@@ -184,6 +191,9 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
                 }
                 if (element.subsidiaria.id) {
                     sublist.setSublistValue({ id: 'custpage_subsidiaria', line: i, value: element.subsidiaria.id });
+                }
+                if (element.subsidiaria.nombre) {
+                    sublist.setSublistValue({ id: 'custpage_subsidiaria_nombre', line: i, value: element.subsidiaria.nombre });
                 }
                 if (element.tipo.nombre) {
                     sublist.setSublistValue({ id: 'custpage_tipo_nombre', line: i, value: element.tipo.nombre });
@@ -224,7 +234,21 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
                 if (element.estado_cargo.nombre) {
                     sublist.setSublistValue({ id: 'custpage_estado_cargo', line: i, value: element.estado_cargo.nombre });
                 }
+                if (element.fecha_creacion) {
+                    sublist.setSublistValue({ id: 'custpage_fecha_creacion', line: i, value: element.fecha_creacion });
+                }
+                if (element.ultima_modificacion) {
+                    sublist.setSublistValue({ id: 'custpage_ultima_modificacion', line: i, value: element.ultima_modificacion });
+                }
+                if (element.ultima_modificacion_por) {
+                    sublist.setSublistValue({ id: 'custpage_ultima_modificacion_por', line: i, value: element.ultima_modificacion_por });
+                }
             });
+
+            // Setear cantidad de registros
+            var numLines = sublist.lineCount;
+            numLines = numLines == -1 ? 0 : numLines;
+            sublist.helpText = `Cantidad de registros: ${numLines}`;
         }
 
         return { createFormReport, createSublist }
