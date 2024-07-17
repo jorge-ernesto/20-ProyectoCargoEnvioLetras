@@ -203,22 +203,69 @@ define(['N'],
 
         function enviar() {
 
+            // Validar cantidad de registros a procesar
+            if (!validarCantidadRegistros()) {
+                return;
+            }
+
             sendRequestWrapper({ method: 'enviar', method_id: '1' });
         }
 
         function recibir() {
+
+            // Validar cantidad de registros a procesar
+            if (!validarCantidadRegistros()) {
+                return;
+            }
 
             sendRequestWrapper({ method: 'recibir', method_id: '2' });
         }
 
         function rechazar() {
 
+            // Validar cantidad de registros a procesar
+            if (!validarCantidadRegistros()) {
+                return;
+            }
+
             sendRequestWrapper({ method: 'rechazar', method_id: '3' });
         }
 
         function procesar() {
 
+            // Validar cantidad de registros a procesar
+            if (!validarCantidadRegistros()) {
+                return;
+            }
+
             sendRequestWrapper({ method: 'procesar', method_id: '4' });
+        }
+
+        function validarCantidadRegistros() {
+
+            // Obtener data
+            let recordContext = currentRecord.get();
+            // Letras por pagar seleccionadas
+            let data_letras_por_pagar_seleccionadas = getDataLetrasPorPagar_Seleccionadas(recordContext);
+
+            // Validar cantidad de registros a procesar
+            if (Object.keys(data_letras_por_pagar_seleccionadas).length > 50) {
+
+                // Cargar Sweet Alert
+                loadSweetAlertLibrary().then(function () {
+
+                    // Ejecutar validacion
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "No puede seleccionar mas de 50 registros",
+                    });
+                });
+
+                return false;
+            }
+
+            return true;
         }
 
         function descargarExcel() {

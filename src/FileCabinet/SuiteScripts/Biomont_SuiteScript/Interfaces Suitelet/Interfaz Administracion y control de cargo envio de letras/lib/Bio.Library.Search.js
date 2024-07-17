@@ -45,7 +45,11 @@ define(['./Bio.Library.Helper', 'N'],
                         label: "RUC"
                     }),
                     search.createColumn({ name: "entity", label: "PROVEEDOR" }),
-                    search.createColumn({ name: "datecreated", label: "FECHA DE REGISTRO" }),
+                    search.createColumn({
+                        name: "datecreated",
+                        sort: search.Sort.DESC,
+                        label: "FECHA DE REGISTRO"
+                    }),
                     search.createColumn({
                         name: "trandate",
                         // sort: search.Sort.ASC,
@@ -54,7 +58,7 @@ define(['./Bio.Library.Helper', 'N'],
                     search.createColumn({
                         name: "formuladate",
                         formula: "NVL({duedate}, {custbody_ns_lt_fech_venc})",
-                        sort: search.Sort.DESC,
+                        // sort: search.Sort.ASC,
                         label: "FECHA DE VENCIMIENTO"
                     }),
                     search.createColumn({ name: "typecode", label: "Código de tipo" }),

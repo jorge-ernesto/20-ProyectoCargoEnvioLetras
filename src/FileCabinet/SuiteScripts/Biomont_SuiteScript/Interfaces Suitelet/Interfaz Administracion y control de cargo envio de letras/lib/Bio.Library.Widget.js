@@ -192,65 +192,67 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             // sublist.addRefreshButton();
 
             // Setear los datos obtenidos a sublista
-            dataLetrasPorPagar.forEach((element, i) => {
-                if (element.id_interno) {
-                    sublist.setSublistValue({ id: 'custpage_id_interno', line: i, value: element.id_interno });
-                }
-                if (element.subsidiaria.id) {
-                    sublist.setSublistValue({ id: 'custpage_subsidiaria', line: i, value: element.subsidiaria.id });
-                }
-                if (element.subsidiaria.nombre) {
-                    sublist.setSublistValue({ id: 'custpage_subsidiaria_nombre', line: i, value: element.subsidiaria.nombre });
-                }
-                if (element.tipo.nombre) {
-                    sublist.setSublistValue({ id: 'custpage_tipo_nombre', line: i, value: element.tipo.nombre });
-                }
-                if (element.numero_documento) {
-                    sublist.setSublistValue({ id: 'custpage_numero_documento', line: i, value: element.numero_documento });
-                }
-                if (element.proveedor.ruc) {
-                    sublist.setSublistValue({ id: 'custpage_proveedor_ruc', line: i, value: element.proveedor.ruc });
-                }
-                if (element.proveedor.nombre) {
-                    sublist.setSublistValue({ id: 'custpage_proveedor_nombre', line: i, value: element.proveedor.nombre });
-                }
-                if (element.fecha_registro) {
-                    sublist.setSublistValue({ id: 'custpage_fecha_registro', line: i, value: element.fecha_registro });
-                }
-                if (element.fecha_emision) {
-                    sublist.setSublistValue({ id: 'custpage_fecha_emision', line: i, value: element.fecha_emision });
-                }
-                if (element.fecha_vencimiento) {
-                    sublist.setSublistValue({ id: 'custpage_fecha_vencimiento', line: i, value: element.fecha_vencimiento });
-                }
-                if (element.estado) {
-                    sublist.setSublistValue({ id: 'custpage_estado', line: i, value: element.estado });
-                }
-                if (element.moneda.nombre) {
-                    sublist.setSublistValue({ id: 'custpage_moneda_nombre', line: i, value: element.moneda.nombre });
-                }
-                if (element.importe_bruto_me || objHelper.isNumeric(element.importe_bruto_me)) {
-                    sublist.setSublistValue({ id: 'custpage_importe_bruto_me', line: i, value: element.importe_bruto_me });
-                }
-                if (element.importe_pagado_me || objHelper.isNumeric(element.importe_pagado_me)) {
-                    sublist.setSublistValue({ id: 'custpage_importe_pagado_me', line: i, value: element.importe_pagado_me });
-                }
-                if (element.importe_saldo_me || objHelper.isNumeric(element.importe_saldo_me)) {
-                    sublist.setSublistValue({ id: 'custpage_importe_saldo_me', line: i, value: element.importe_saldo_me });
-                }
-                if (element.estado_cargo.nombre) {
-                    sublist.setSublistValue({ id: 'custpage_estado_cargo', line: i, value: element.estado_cargo.nombre });
-                }
-                if (element.fecha_creacion) {
-                    sublist.setSublistValue({ id: 'custpage_fecha_creacion', line: i, value: element.fecha_creacion });
-                }
-                if (element.ultima_modificacion) {
-                    sublist.setSublistValue({ id: 'custpage_ultima_modificacion', line: i, value: element.ultima_modificacion });
-                }
-                if (element.ultima_modificacion_por) {
-                    sublist.setSublistValue({ id: 'custpage_ultima_modificacion_por', line: i, value: element.ultima_modificacion_por });
-                }
-            });
+            if (Object.keys(dataLetrasPorPagar).length > 0) {
+                dataLetrasPorPagar['detalle'].forEach((element, i) => {
+                    if (element.id_interno) {
+                        sublist.setSublistValue({ id: 'custpage_id_interno', line: i, value: element.id_interno });
+                    }
+                    if (element.subsidiaria.id) {
+                        sublist.setSublistValue({ id: 'custpage_subsidiaria', line: i, value: element.subsidiaria.id });
+                    }
+                    if (element.subsidiaria.nombre) {
+                        sublist.setSublistValue({ id: 'custpage_subsidiaria_nombre', line: i, value: element.subsidiaria.nombre });
+                    }
+                    if (element.tipo.nombre) {
+                        sublist.setSublistValue({ id: 'custpage_tipo_nombre', line: i, value: element.tipo.nombre });
+                    }
+                    if (element.numero_documento) {
+                        sublist.setSublistValue({ id: 'custpage_numero_documento', line: i, value: element.numero_documento });
+                    }
+                    if (element.proveedor.ruc) {
+                        sublist.setSublistValue({ id: 'custpage_proveedor_ruc', line: i, value: element.proveedor.ruc });
+                    }
+                    if (element.proveedor.nombre) {
+                        sublist.setSublistValue({ id: 'custpage_proveedor_nombre', line: i, value: element.proveedor.nombre });
+                    }
+                    if (element.fecha_registro) {
+                        sublist.setSublistValue({ id: 'custpage_fecha_registro', line: i, value: element.fecha_registro });
+                    }
+                    if (element.fecha_emision) {
+                        sublist.setSublistValue({ id: 'custpage_fecha_emision', line: i, value: element.fecha_emision });
+                    }
+                    if (element.fecha_vencimiento) {
+                        sublist.setSublistValue({ id: 'custpage_fecha_vencimiento', line: i, value: element.fecha_vencimiento });
+                    }
+                    if (element.estado) {
+                        sublist.setSublistValue({ id: 'custpage_estado', line: i, value: element.estado });
+                    }
+                    if (element.moneda.nombre) {
+                        sublist.setSublistValue({ id: 'custpage_moneda_nombre', line: i, value: element.moneda.nombre });
+                    }
+                    if (element.importe_bruto_me || objHelper.isNumeric(element.importe_bruto_me)) {
+                        sublist.setSublistValue({ id: 'custpage_importe_bruto_me', line: i, value: element.importe_bruto_me });
+                    }
+                    if (element.importe_pagado_me || objHelper.isNumeric(element.importe_pagado_me)) {
+                        sublist.setSublistValue({ id: 'custpage_importe_pagado_me', line: i, value: element.importe_pagado_me });
+                    }
+                    if (element.importe_saldo_me || objHelper.isNumeric(element.importe_saldo_me)) {
+                        sublist.setSublistValue({ id: 'custpage_importe_saldo_me', line: i, value: element.importe_saldo_me });
+                    }
+                    if (element.estado_cargo.nombre) {
+                        sublist.setSublistValue({ id: 'custpage_estado_cargo', line: i, value: element.estado_cargo.nombre });
+                    }
+                    if (element.fecha_creacion) {
+                        sublist.setSublistValue({ id: 'custpage_fecha_creacion', line: i, value: element.fecha_creacion });
+                    }
+                    if (element.ultima_modificacion) {
+                        sublist.setSublistValue({ id: 'custpage_ultima_modificacion', line: i, value: element.ultima_modificacion });
+                    }
+                    if (element.ultima_modificacion_por) {
+                        sublist.setSublistValue({ id: 'custpage_ultima_modificacion_por', line: i, value: element.ultima_modificacion_por });
+                    }
+                });
+            }
 
             // Setear cantidad de registros
             var numLines = sublist.lineCount;

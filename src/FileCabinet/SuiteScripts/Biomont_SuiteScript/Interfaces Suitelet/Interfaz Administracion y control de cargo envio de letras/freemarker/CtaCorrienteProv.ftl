@@ -249,7 +249,7 @@
             </Row>
 
             <!-- Inicio de cuerpo (tabla) -->
-            <#list params.transactions as documentos>
+            <#list params.transactions.detalle as documentos>
                 <Row>
                     <Cell ss:StyleID="cell">
                         <Data ss:Type="String">${documentos.id_interno}</Data>
@@ -295,6 +295,26 @@
                     </Cell>
                     <Cell ss:StyleID="cell">
                         <Data ss:Type="String">${documentos.estado_cargo.nombre}</Data>
+                    </Cell>
+                </Row>
+            </#list>
+
+            <#list params.transactions.totales as keytot, totales>
+                <Row>
+                    <Cell ss:StyleID="t1-totales" ss:MergeAcross="10">
+                        <Data ss:Type="String">TOTAL ${keytot}</Data>
+                    </Cell>
+                    <Cell ss:StyleID="t1-currency">
+                        <Data ss:Type="Number">${totales.importe_bruto_me}</Data>
+                    </Cell>
+                    <Cell ss:StyleID="t1-currency">
+                        <Data ss:Type="Number">${totales.importe_pagado_me}</Data>
+                    </Cell>
+                    <Cell ss:StyleID="t1-currency">
+                        <Data ss:Type="Number">${totales.importe_saldo_me}</Data>
+                    </Cell>
+                    <Cell ss:StyleID="t1-totales">
+                        <Data ss:Type="String"></Data>
                     </Cell>
                 </Row>
             </#list>

@@ -60,14 +60,21 @@ define(['./lib/Bio.Library.Search', './lib/Bio.Library.Process', './lib/Bio.Libr
                     // Obtener datos por search
                     let dataLetrasPorPagar = objSearch.getDataLetrasPorPagar(subsidiary, dateFrom, dateTo, estadoCargo);
                     let dataLetrasPorPagar_Datos = objSearch.getDataLetrasPorPagar_Datos(subsidiary);
-                    let dataLetrasPorPagar_Completo = objProcess.getDataLetrasPorPagar_Completo(dataLetrasPorPagar, dataLetrasPorPagar_Datos, estadoCargo)
+
+                    // Procesar reporte
+                    let dataLetrasPorPagar_Completo = objProcess.getDataLetrasPorPagar_Completo(dataLetrasPorPagar, dataLetrasPorPagar_Datos, estadoCargo);
+                    let dataLetrasPorPagar_Agrupado = objProcess.agruparLetrasPorPagar(dataLetrasPorPagar_Completo);
+                    let dataReporte = objProcess.getReporteFreeMarker(dataLetrasPorPagar_Agrupado);
 
                     // Debug
-                    // objHelper.error_log('data', { dataLetrasPorPagar, dataDatosLetrasPorPagar });
+                    // objHelper.error_log('data', { dataLetrasPorPagar });
+                    // objHelper.error_log('data', { dataLetrasPorPagar_Datos });
                     // objHelper.error_log('data', { dataLetrasPorPagar_Completo });
+                    // objHelper.error_log('data', { dataLetrasPorPagar_Agrupado });
+                    // objHelper.error_log('data', { dataReporte });
 
                     // Crear sublista
-                    objWidget.createSublist(form, dataLetrasPorPagar_Completo);
+                    objWidget.createSublist(form, dataReporte);
                 }
 
                 // Renderizar formulario
