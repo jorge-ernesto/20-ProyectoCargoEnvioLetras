@@ -75,7 +75,7 @@ define(['./lib/Bio.Library.Search', './lib/Bio.Library.Helper', 'N'],
                         // Debug
                         // objHelper.error_log('test err', response);
 
-                        if ((method == 'enviar' || method == 'recibir' || method == 'rechazar') && Object.keys(data_letras_por_pagar_seleccionadas).length > 0) {
+                        if ((method == 'enviar' || method == 'recibir' || method == 'rechazar' || method == 'procesar') && Object.keys(data_letras_por_pagar_seleccionadas).length > 0) {
 
                             // Recorrer data - Letras por pagar seleccionadas
                             data_letras_por_pagar_seleccionadas.forEach((value_LPP_SELECT, key_LPP_SELECT) => {

@@ -47,6 +47,11 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
                 functionName: 'rechazar()'
             });
             form.addButton({
+                id: 'custpage_button_procesar',
+                label: 'Procesar',
+                functionName: 'procesar()'
+            });
+            form.addButton({
                 id: 'custpage_button_descargar_excel',
                 label: 'Excel',
                 functionName: 'descargarExcel()'
@@ -183,6 +188,8 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
 
             // Setear propiedades a sublista
             sublist.getField({ id: 'custpage_subsidiaria' }).updateDisplayType({ displayType: 'HIDDEN' });
+            sublist.addMarkAllButtons();
+            // sublist.addRefreshButton();
 
             // Setear los datos obtenidos a sublista
             dataLetrasPorPagar.forEach((element, i) => {

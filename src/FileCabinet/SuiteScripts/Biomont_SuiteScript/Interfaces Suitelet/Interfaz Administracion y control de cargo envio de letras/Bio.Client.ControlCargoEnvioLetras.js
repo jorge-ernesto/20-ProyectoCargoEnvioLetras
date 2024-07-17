@@ -216,6 +216,11 @@ define(['N'],
             sendRequestWrapper({ method: 'rechazar', method_id: '3' });
         }
 
+        function procesar() {
+
+            sendRequestWrapper({ method: 'procesar', method_id: '4' });
+        }
+
         function descargarExcel() {
 
             // Obtener data
@@ -251,6 +256,7 @@ define(['N'],
             enviar: enviar,
             recibir: recibir,
             rechazar: rechazar,
+            procesar: procesar,
             descargarExcel: descargarExcel
         };
 
