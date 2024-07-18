@@ -16,6 +16,14 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             }
         }
 
+        /**
+         * Centros de Costo
+         *
+         * 16: 4301 TECNOLOGÍAS DE LA INFORMACIÓN
+         * 17: 4401 CONTABILIDAD
+         * 18: 4601 FINANZAS
+         */
+
         /****************** Suitelet Report ******************/
         function createFormReport() {
             // Crear formulario
@@ -31,31 +39,42 @@ define(['./Bio.Library.Search', './Bio.Library.Helper', 'N'],
             form.addSubmitButton({
                 label: 'Consultar'
             });
-            form.addButton({
-                id: 'custpage_button_enviar',
-                label: 'Enviar',
-                functionName: 'enviar()'
-            });
-            form.addButton({
-                id: 'custpage_button_recibir',
-                label: 'Recibir',
-                functionName: 'recibir()'
-            });
-            form.addButton({
-                id: 'custpage_button_rechazar',
-                label: 'Rechazar',
-                functionName: 'rechazar()'
-            });
-            form.addButton({
-                id: 'custpage_button_procesar',
-                label: 'Procesar',
-                functionName: 'procesar()'
-            });
-            form.addButton({
-                id: 'custpage_button_descargar_excel',
-                label: 'Excel',
-                functionName: 'descargarExcel()'
-            });
+
+            // Obtener datos
+            let { user } = objHelper.getUser();
+            let { centro_costo } = objHelper.getDataUser(user.id);
+
+            if (centro_costo == 16 || centro_costo == 17) {
+                form.addButton({
+                    id: 'custpage_button_enviar',
+                    label: 'Enviar',
+                    functionName: 'enviar()'
+                });
+            }
+            if (centro_costo == 16 || centro_costo == 18) {
+                form.addButton({
+                    id: 'custpage_button_recibir',
+                    label: 'Recibir',
+                    functionName: 'recibir()'
+                });
+                form.addButton({
+                    id: 'custpage_button_rechazar',
+                    label: 'Rechazar',
+                    functionName: 'rechazar()'
+                });
+                form.addButton({
+                    id: 'custpage_button_procesar',
+                    label: 'Procesar',
+                    functionName: 'procesar()'
+                });
+            }
+            if (centro_costo == 16 || centro_costo == 17 || centro_costo == 18) {
+                form.addButton({
+                    id: 'custpage_button_descargar_excel',
+                    label: 'Excel',
+                    functionName: 'descargarExcel()'
+                });
+            }
 
             // Mostrar SubPestañas
             // form.addSubtab({

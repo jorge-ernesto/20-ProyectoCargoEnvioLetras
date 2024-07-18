@@ -7,7 +7,7 @@ define(['N'],
 
     function (N) {
 
-        const { log, runtime, format, email, url } = N;
+        const { log, runtime, record, url, email } = N;
 
         const scriptId = 'customscript_bio_sl_ctrl_car_env_let';
         const deployId = 'customdeploy_bio_sl_ctrl_car_env_let';
@@ -23,14 +23,23 @@ define(['N'],
             throw `${title} -- ${JSON.stringify(data)}`;
         }
 
-        function email_log(title, data) {
-            let user = runtime.getCurrentUser();
-            email.send({
-                author: user.id,
-                recipients: user.id,
-                subject: title,
-                body: `<pre>${JSON.stringify(data)}</pre>`,
-            })
+        function error_message(message) {
+            throw new Error(`${message}`);
+        }
+
+        /****************** Validacion ******************/
+
+        function getDataUser(userId) {
+            // Cargar el registro del empleado
+            var employeeRecord = record.load({
+                type: record.Type.EMPLOYEE,
+                id: userId
+            });
+
+            // Obtener datos del empleado
+            var centro_costo = employeeRecord.getValue('class');
+
+            return { centro_costo };
         }
 
         /****************** Email ******************/
@@ -112,6 +121,6 @@ define(['N'],
             return !isNaN(n);
         }
 
-        return { getUser, error_log, email_log, sendEmail_NotificarRechazo, isNumeric }
+        return { getUser, error_log, error_message, getDataUser, sendEmail_NotificarRechazo, isNumeric }
 
     });
