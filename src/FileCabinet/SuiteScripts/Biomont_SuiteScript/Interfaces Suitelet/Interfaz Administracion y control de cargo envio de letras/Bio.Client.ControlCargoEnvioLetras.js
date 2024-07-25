@@ -44,6 +44,10 @@ define(['N'],
                 });
                 recordContext.commitLine({ sublistId: sublistName });
             }
+
+            // Evitar que aparezca el mensaje 'Estas seguro que deseas salir de la pantalla'
+            // En pageInit debe ponerse al final
+            setWindowChanged(window, false);
         }
 
         /****************** Funcionalidad en campos ******************/
