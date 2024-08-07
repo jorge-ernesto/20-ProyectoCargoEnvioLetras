@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_bio_lis_estcar_concarenvlet">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>BIO_LIS_ESTCAR_CONCARENVLET</name>
+  <customvalues>
+    <customvalue scriptid="val_4003282_6462530_sb1_982">
+      <isinactive>F</isinactive>
+      <value>Enviado</value>
+    </customvalue>
+    <customvalue scriptid="val_4003283_6462530_sb1_898">
+      <isinactive>F</isinactive>
+      <value>Recibido</value>
+    </customvalue>
+    <customvalue scriptid="val_4003284_6462530_sb1_324">
+      <isinactive>F</isinactive>
+      <value>Rechazado</value>
+    </customvalue>
+    <customvalue scriptid="val_4005360_6462530_sb1_832">
+      <isinactive>F</isinactive>
+      <value>Procesado</value>
+    </customvalue>
+  </customvalues>
+</customlist>

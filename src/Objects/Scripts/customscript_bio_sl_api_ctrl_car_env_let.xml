@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_bio_sl_api_ctrl_car_env_let">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>Biomont SL API Ctrl Cargo Envio Letras</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Biomont_SuiteScript/Interfaces Suitelet/Interfaz Administracion y control de cargo envio de letras/Bio.SuiteletAPI.ControlCargoEnvioLetras.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_bio_sl_api_ctrl_car_env_let">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>Biomont SL API Ctrl Cargo Envio Letras</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>
