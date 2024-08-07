@@ -74,7 +74,12 @@ define(['./Bio.Library.Helper', 'N'],
                     search.createColumn({ name: "fxamountpaid", label: "Importe pagado (moneda extranjera)" }),
                     search.createColumn({ name: "statusref", label: "Estado" }),
                     // Otros
-                    search.createColumn({ name: "subsidiary", label: "Subsidiaria" })
+                    search.createColumn({ name: "subsidiary", label: "Subsidiaria" }),
+                    // search.createColumn({
+                    //     name: "formulatext",
+                    //     formula: "CASE WHEN {typecode} IN ('Custom122') THEN LISTAGG (DISTINCT {custrecord_ptly_letra_pp_bill_relac_l_pp.custrecord_ptly_letra_pp_bill_relac_bill}, '; ') OVER (PARTITION BY {internalid}) ELSE '' END",
+                    //     label: "Formula (Text)"
+                    // })
                 ],
                 filters: [
                     ["subsidiary", "anyof", subsidiary],
